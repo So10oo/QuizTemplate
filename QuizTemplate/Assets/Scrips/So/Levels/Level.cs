@@ -5,4 +5,10 @@ using UnityEngine;
 public class Level : BaseLevel
 {
     public Option[] Options;
+
+    public override Level GetLevel()
+    {
+        return this;
+    }
+
 }

@@ -2,7 +2,7 @@
 
 namespace Assets.Scrips
 {
-    public class SingletonClass<T> : MonoBehaviour where T : SingletonClass<T>
+    public class Singleton<T> : MonoBehaviour where T : Singleton<T>
     {
         public static T instance;
 

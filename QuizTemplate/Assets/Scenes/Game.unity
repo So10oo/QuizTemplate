@@ -422,7 +422,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Levels:
   - {fileID: 11400000, guid: 9f42f6d156ca9c64caf1a74401b441bd, type: 2}
+  - {fileID: 11400000, guid: 8fd53dced6d858940bcc0c8091608df7, type: 2}
+  - {fileID: 11400000, guid: fba18c310c3f62d48ae0720249d79b85, type: 2}
+  - {fileID: 11400000, guid: 4902c4f80b05b7243a007ed038f74057, type: 2}
   - {fileID: 11400000, guid: 8eeaaa86993278140bc825de52eef99b, type: 2}
+  - {fileID: 11400000, guid: 8513f583da225b243a8281f4d3836498, type: 2}
   _levelDisplay: {fileID: 6901782012634258727}
   OnLevelChanged:
     m_PersistentCalls:
@@ -478,9 +482,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnReadyNextLevel:
-    m_PersistentCalls:
-      m_Calls: []
   EndGame:
     m_PersistentCalls:
       m_Calls:

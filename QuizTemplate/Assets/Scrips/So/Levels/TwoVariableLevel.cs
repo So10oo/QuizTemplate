@@ -13,24 +13,27 @@ public class TwoVariableLevel : BaseLevel
 #endif
     public string DeceitfulMessage;
 
-    public static explicit operator Level(TwoVariableLevel twoVariableLevel)
+
+    public override Level GetLevel()
     {
         var level = new Level()
         {
-            Options = new Option[twoVariableLevel.Options.Length],
-            Question = twoVariableLevel.Question,
+            Options = new Option[Options.Length],
+            Question = Question,
         };
-        for (int i = 0; i < twoVariableLevel.Options.Length; i++)
+        for (int i = 0; i < Options.Length; i++)
         {
             var option = new Option()
             {
-                Truthful = twoVariableLevel.Options[i].Truthful,
-                Value = twoVariableLevel.Options[i].Value
+                Truthful = Options[i].Truthful,
+                Value = Options[i].Value
             };
-            option.Message = twoVariableLevel.Options[i].Truthful ? 
-                twoVariableLevel.TruthfulMessage : twoVariableLevel.DeceitfulMessage;
+            option.Message = Options[i].Truthful ?
+                TruthfulMessage : DeceitfulMessage;
             level.Options[i] = option;
         };
         return level;
     }
+
+
 }

@@ -5,6 +5,6 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public class CanvasSinglton : SingletonClass<CanvasSinglton>
+public class CanvasSinglton : Assets.Scrips.Singleton<CanvasSinglton>
 {
 }
