@@ -3,15 +3,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Level 1", menuName = "New TwoVariableLevel", order = 2)]
 public class TwoVariableLevel : BaseLevel
 {
-    public BaseOption[] Options;
+    public BaseOption[] Options = new BaseOption[4];
 #if UNITY_EDITOR
     [TextArea(1, 10)]
 #endif
-    public string TruthfulMessage;
+    public string TruthfulMessage = "Правильный ответ!";
 #if UNITY_EDITOR
     [TextArea(1, 10)]
 #endif
-    public string DeceitfulMessage;
+    public string DeceitfulMessage = "Правильный ответ:";
 
 
     public override Level GetLevel()
