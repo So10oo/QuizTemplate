@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private UnityEvent OnLevelChanged;//совершил переход на другой уровень уровень
     [SerializeField] private UnityEvent StartGame;
-    //[SerializeField] private UnityEvent OnReadyNextLevel;//стал готов к переходу на следующий уровень 
     [SerializeField] private UnityEvent EndGame;
 
 
@@ -34,8 +33,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        SetLevel(0);
-        StartGame.Invoke();
+        StartCoroutine(Levels.CoroutineShuffle(() => 
+        { 
+            SetLevel(0); 
+            StartGame.Invoke(); 
+        }));
     }
 
     public void NextLevel()
@@ -50,9 +52,6 @@ public class GameManager : MonoBehaviour
     private void SetLevel(int indexLevel)
     {
         if (indexLevel >= 0 && indexLevel < Levels.Length)
-        {
-            CurrentLevel = Levels[indexLevel];          
-        }
-
+            CurrentLevel = Levels[indexLevel];
     }
 }

@@ -26,7 +26,10 @@ public class LevelDisplay : MonoBehaviour
         _questionText.text = level.Question;
         DestroyChilds();
 
-        for (int i = 0; i < level.Options.Length; i++)
+        level.Options.Shuffle();
+        Option[] options = level.Options;
+
+        for (int i = 0; i < options.Length; i++)
         {
             var button = Instantiate(_buttonPrefab, new Vector3(0, 0, 0), Quaternion.identity);
             button.transform.SetParent(_panel.transform, false);
@@ -34,14 +37,15 @@ public class LevelDisplay : MonoBehaviour
             button.transform.localScale = Vector3.one;
 
             var Text = button.GetComponentInChildren<TextMeshProUGUI>();
-            var options = level.Options[i];
-            Text.text = options.Value;
+
+            var option = options[i];
+            Text.text = option.Value;
             var buttonScript = button.GetComponent<Button>();
             _renderButtonsScript.Add(buttonScript);
 
             buttonScript.onClick.AddListener(delegate
             {
-                MassageDisplay(button,options);
+                MassageDisplay(button,option);
                 _renderButtonsScript.ForEach((x) => x.onClick.RemoveAllListeners());
             });
         }
@@ -68,10 +72,6 @@ public class LevelDisplay : MonoBehaviour
 
     private void DestroyChilds()
     {
-        //while (_panel.transform.childCount > 0)
-        //{
-        //    DestroyImmediate(_panel.transform.GetChild(0).gameObject);
-        //}
         _renderButtonsScript.ForEach(x => Destroy(x.gameObject));
         _renderButtonsScript.Clear();   
     }
