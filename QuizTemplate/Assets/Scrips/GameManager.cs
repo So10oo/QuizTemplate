@@ -1,6 +1,9 @@
 using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -53,5 +56,22 @@ public class GameManager : MonoBehaviour
     {
         if (indexLevel >= 0 && indexLevel < Levels.Length)
             CurrentLevel = Levels[indexLevel];
+    }
+
+
+    [ContextMenu("Save")] 
+    public void Save()
+    {
+        Level[] ls = new Level[Levels.Length];
+        for (int i = 0; i < Levels.Length; i++)
+            ls[i] = Levels[i].GetLevel();
+
+        var jsonLevels = JsonConvert.SerializeObject(ls, Formatting.Indented);
+        //var jsonLevels = JsonUtility.ToJson(ls, true);
+        //var path = Path.Combine(Application.persistentDataPath + "/Save.json");
+
+        File.WriteAllText("Save.json", jsonLevels);
+
+        var a = JsonConvert.DeserializeObject<Level[]>(jsonLevels);
     }
 }
