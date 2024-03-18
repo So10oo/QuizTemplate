@@ -16,11 +16,10 @@ public class TwoVariableLevel : BaseLevel
 
     public override Level GetLevel()
     {
-        var level = new Level()
-        {
-            Options = new Option[Options.Length],
-            Question = Question,
-        };
+        var level = CreateInstance<Level>();
+        level.Options = new Option[Options.Length];
+        level.Question = Question;
+        
         for (int i = 0; i < Options.Length; i++)
         {
             var option = new Option()
@@ -34,6 +33,4 @@ public class TwoVariableLevel : BaseLevel
         };
         return level;
     }
-
-
 }

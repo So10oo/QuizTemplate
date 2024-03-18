@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5295eee9fa098a345bf32c22c1970e8a, type: 3}
   m_Name: Level 24
   m_EditorClassIdentifier: 
-  Question: "\u041F\u0440\u0438\u0441\u0446\u0438\u043B\u0430. \u041A\u0442\u043E
-    \u044D\u0442\u043E?"
+  Question: "\u041A\u0442\u043E \u0442\u0430\u043A\u0430\u044F \u041F\u0440\u0438\u0441\u0446\u0438\u043B\u0430?"
   Options:
   - Value: "\u041F\u043E\u044D\u0442\u0435\u0441\u0441\u0430"
     Truthful: 0

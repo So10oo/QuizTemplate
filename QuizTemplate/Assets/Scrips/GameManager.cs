@@ -63,20 +63,5 @@ public class GameManager : MonoBehaviour
     {
         Container = container;
     }
-
-    [ContextMenu("Save")]
-    public void Save()
-    {
-        Level[] ls = new Level[Levels.Length];
-        for (int i = 0; i < Levels.Length; i++)
-            ls[i] = Levels[i].GetLevel();
-
-        var jsonLevels = JsonConvert.SerializeObject(ls, Formatting.Indented);
-        //var jsonLevels = JsonUtility.ToJson(ls, true);
-        //var path = Path.Combine(Application.persistentDataPath + "/Save.json");
-
-        File.WriteAllText("Save.json", jsonLevels);
-
-        var a = JsonConvert.DeserializeObject<Level[]>(jsonLevels);
-    }
+ 
 }
