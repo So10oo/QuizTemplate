@@ -1,6 +1,5 @@
-using Newtonsoft.Json;
 using System;
-using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,14 +7,14 @@ public class GameManager : MonoBehaviour
 {
     static LevelContainer Container;
 
-    [SerializeField] private LevelDisplay _levelDisplay;
+    [SerializeField] LevelDisplay _levelDisplay;
+    [SerializeField] TextMeshProUGUI _endMes;
+    [SerializeField] UnityEvent OnLevelChanged;//совершил переход на другой уровень уровень
+    [SerializeField] UnityEvent StartGame;
+    [SerializeField] UnityEvent EndGame;
 
-    [SerializeField] private UnityEvent OnLevelChanged;//совершил переход на другой уровень уровень
-    [SerializeField] private UnityEvent StartGame;
-    [SerializeField] private UnityEvent EndGame;
 
-
-    private ILevel _currentLevel;
+    ILevel _currentLevel;
     ILevel CurrentLevel
     {
         get
@@ -29,6 +28,12 @@ public class GameManager : MonoBehaviour
                 _currentLevel = value;
                 _levelDisplay.QuestionAndOptionsDisplay(_currentLevel.GetLevel());
                 OnLevelChanged.Invoke();
+                _levelDisplay.ResponseСheck = (b) => 
+                { 
+                    if (b) 
+                        _numberСorrectAnswers++; 
+                };
+                
             }
         }
     }
@@ -49,6 +54,7 @@ public class GameManager : MonoBehaviour
         int indexNextLevel = Array.IndexOf(Levels, CurrentLevel) + 1;
         if (indexNextLevel == Levels.Length)
             EndGame.Invoke();
+        
         else
             SetLevel(indexNextLevel);
     }
@@ -58,6 +64,13 @@ public class GameManager : MonoBehaviour
         if (indexLevel >= 0 && indexLevel < Levels.Length)
             CurrentLevel = Levels[indexLevel];
     }
+
+    int _numberСorrectAnswers = 0;
+    public void EndMes()
+    {
+        _endMes.text = $"Конец теста!\n<color=#00FF00>Правильных ответов: {_numberСorrectAnswers}\n<color=#FF0000>Неправильных ответов: {Container.GetLevels().Length - _numberСorrectAnswers}";
+    }
+
 
     public static void SetKompleksitas(LevelContainer container)
     {

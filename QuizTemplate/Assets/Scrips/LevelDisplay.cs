@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -18,6 +19,7 @@ public class LevelDisplay : MonoBehaviour
 
     [SerializeField] private UnityEvent OnRenderMassage;
 
+    public Action<bool> Response—heck;
 
     private List<Button> _renderButtonsScript = new List<Button>();
 
@@ -57,6 +59,7 @@ public class LevelDisplay : MonoBehaviour
     {
         var imageButton = button.GetComponent<Image>();
         _massageText.text = option.Message;
+        Response—heck.Invoke(option.Truthful);
         if (option.Truthful)
         {
             _massageText.color = Color.green;
@@ -75,4 +78,6 @@ public class LevelDisplay : MonoBehaviour
         _renderButtonsScript.ForEach(x => Destroy(x.gameObject));
         _renderButtonsScript.Clear();   
     }
+
+
 }
