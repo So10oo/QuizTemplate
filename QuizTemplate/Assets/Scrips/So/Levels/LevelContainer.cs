@@ -9,4 +9,9 @@ public class LevelContainer : ScriptableObject
     {
         return Levels;
     }
+
+    public void SetKompleksitas()
+    {
+        GameManager.SetKompleksitas(this);
+    }
 }

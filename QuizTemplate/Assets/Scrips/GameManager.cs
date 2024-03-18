@@ -1,13 +1,12 @@
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private LevelContainer _container;
+    static LevelContainer Container;
 
     [SerializeField] private LevelDisplay _levelDisplay;
 
@@ -37,11 +36,11 @@ public class GameManager : MonoBehaviour
     private ILevel[] Levels;
     void Start()
     {
-        Levels = _container.GetLevels();
-        StartCoroutine(Levels.CoroutineShuffle(() => 
-        { 
-            SetLevel(0); 
-            StartGame.Invoke(); 
+        Levels = Container.GetLevels();
+        StartCoroutine(Levels.CoroutineShuffle(() =>
+        {
+            SetLevel(0);
+            StartGame.Invoke();
         }));
     }
 
@@ -60,8 +59,12 @@ public class GameManager : MonoBehaviour
             CurrentLevel = Levels[indexLevel];
     }
 
+    public static void SetKompleksitas(LevelContainer container)
+    {
+        Container = container;
+    }
 
-    [ContextMenu("Save")] 
+    [ContextMenu("Save")]
     public void Save()
     {
         Level[] ls = new Level[Levels.Length];

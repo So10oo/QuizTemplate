@@ -420,7 +420,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9769d9870f7820f478e5f90eaccca55a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _container: {fileID: 11400000, guid: 7b1729a1075c25d4696e8eb97c63c037, type: 2}
   _levelDisplay: {fileID: 6901782012634258727}
   OnLevelChanged:
     m_PersistentCalls:
@@ -1235,10 +1234,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65
+  m_fontSize: 72
   m_fontSizeBase: 65
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
