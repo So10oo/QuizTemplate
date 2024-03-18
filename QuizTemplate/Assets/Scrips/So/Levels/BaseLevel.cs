@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-[Serializable]
+
 public abstract class BaseLevel : ScriptableObject , ILevel
 {
     public string Question;

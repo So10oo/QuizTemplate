@@ -420,10 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9769d9870f7820f478e5f90eaccca55a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Levels:
-  - {fileID: 11400000, guid: 9f42f6d156ca9c64caf1a74401b441bd, type: 2}
-  - {fileID: 11400000, guid: 8fd53dced6d858940bcc0c8091608df7, type: 2}
-  - {fileID: 11400000, guid: fba18c310c3f62d48ae0720249d79b85, type: 2}
+  _container: {fileID: 11400000, guid: 7b1729a1075c25d4696e8eb97c63c037, type: 2}
   _levelDisplay: {fileID: 6901782012634258727}
   OnLevelChanged:
     m_PersistentCalls:

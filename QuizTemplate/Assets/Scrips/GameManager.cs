@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private BaseLevel[] Levels;
+    [SerializeField] private LevelContainer _container;
 
     [SerializeField] private LevelDisplay _levelDisplay;
 
@@ -34,8 +34,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private ILevel[] Levels;
     void Start()
     {
+        Levels = _container.GetLevels();
         StartCoroutine(Levels.CoroutineShuffle(() => 
         { 
             SetLevel(0); 
