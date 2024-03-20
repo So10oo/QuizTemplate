@@ -10,17 +10,10 @@ public class Yandex : ScriptableObject
 
     public void ShowAdvertisement()
     {
-        //#if UNITY_EDITOR
-        //        Debug.Log("Unity Editor");
-        //#elif UNITY_WEBGL
-        //        ShowAdv();
-
-        //#endif
-
-#if UNITY_EDITOR
-        Debug.Log("Unity Editor");
-#elif UNITY_WEBGL
-    ShowAdv();
+#if UNITY_WEBGL
+#if !UNITY_EDITOR
+        ShowAdv();
+#endif
 #endif
     }
 

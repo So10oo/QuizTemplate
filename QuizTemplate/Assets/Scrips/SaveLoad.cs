@@ -1,6 +1,8 @@
 using Newtonsoft.Json;
 using System.IO;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 public class SaveLoad : MonoBehaviour
@@ -9,6 +11,7 @@ public class SaveLoad : MonoBehaviour
     [SerializeField] string _pathSave;
     [SerializeField] string _pathLoad;
 
+#if UNITY_EDITOR
     [ContextMenu("Save")]
     public void Save()
     {
@@ -37,8 +40,7 @@ public class SaveLoad : MonoBehaviour
             //string name = Regex.Replace(lvl.Question, @"(?<=^\s*)\s|\s(?=\s*$)", "_");//lvl.Question.Replace(" ", "_");
             AssetDatabase.CreateAsset(lvl, _pathLoad + name + ".asset");
         }
-         
         AssetDatabase.SaveAssets();
-        
     }
+#endif
 }
